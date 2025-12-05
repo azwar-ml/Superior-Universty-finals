@@ -7,18 +7,13 @@ import screen_brightness_control as sbc
 from mediapipe.tasks.python import vision
 from mediapipe.tasks.python.vision import HandLandmarker, HandLandmarkerOptions, HandLandmarkerResult
 
-# --------------------------
-# Hand tracking setup
-# --------------------------
+
 options = HandLandmarkerOptions(
     model_path=HandLandmarkerOptions.DEFAULT_MODEL_PATH,
     num_hands=1
 )
 hand_landmarker = HandLandmarker.create_from_options(options)
 
-# --------------------------
-# Webcam
-# --------------------------
 cap = cv2.VideoCapture(0)
 prev_brightness = sbc.get_brightness()  # current brightness
 smoothness = 5  # higher = smoother
@@ -74,3 +69,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+
